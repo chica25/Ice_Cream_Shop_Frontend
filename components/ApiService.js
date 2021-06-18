@@ -1,6 +1,14 @@
+class ApiService {
+    constructor(baseUrl) {
+        this.baseUrl = baseUrl;
+    }
 
-const indexUrl = 'http://localhost:3000/ice_cream'
 
-fetch(indexUrl)
-.then(resp => resp.json())
-.then(json => console.log(json));
+
+fetchIceCreams = () => {
+    const url = new URL(this.baseUrl + "/ice_creams")
+    fetch(url).then(resp => resp.json())
+    .then(data => IceCream.createIceCream(data));
+
+
+}
